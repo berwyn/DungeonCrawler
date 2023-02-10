@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqaux03vyg6tr"]
+
+[ext_resource type="PackedScene" uid="uid://ilv2f5c1wpug" path="res://Entities/Cell.tscn" id="1_4smsx"]
+[ext_resource type="PackedScene" uid="uid://cciw6gmon6deq" path="res://Entities/Player.tscn" id="2_2wgio"]
+
+[sub_resource type="Environment" id="Environment_6ejer"]
+background_mode = 1
+ambient_light_source = 1
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_v48hv"]
+
+[node name="CellTesting" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6ejer")
+camera_attributes = SubResource("CameraAttributesPhysical_v48hv")
+
+[node name="Cell" parent="." instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Cell2" parent="." instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Cell3" parent="." instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_2wgio")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 0)

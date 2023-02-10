@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d112r55k6bfyu"]
+
+[ext_resource type="MeshLibrary" uid="uid://c711sn64kac2a" path="res://Assets/PrototypeCellLibrary.tres" id="1_jvjyn"]
+
+[node name="PrototypeMap" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_jvjyn")
