@@ -1,7 +1,26 @@
+using System;
+using System.Security.Cryptography.X509Certificates;
 using Godot;
+
+[Flags]
+public enum CellFaceEnabledFlags
+{
+    None = 0,
+    North = 1 << 0,
+    South = 1 << 1,
+    East = 1 << 2,
+    West = 1 << 3,
+    Top = 1 << 4,
+    Bottom = 1 << 5,
+
+    All = North | South | East | West | Top | Bottom,
+}
 
 public partial class Cell : Node3D
 {
+    [Export(PropertyHint.Flags)]
+    private CellFaceEnabledFlags _enabledFaces = CellFaceEnabledFlags.All;
+
     private Node _northFace;
     private Node _southFace;
     private Node _eastFace;
@@ -18,6 +37,8 @@ public partial class Cell : Node3D
         _westFace = GetNode("WestFace");
         _topFace = GetNode("TopFace");
         _bottomFace = GetNode("BottomFace");
+
+        UpdateFaces();
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,8 +49,12 @@ public partial class Cell : Node3D
 
     public void UpdateFaces()
     {
-        SetChildVisibility(false, ref _eastFace);
-        SetChildVisibility(false, ref _westFace);
+        SetChildVisibility(_enabledFaces.HasFlag(CellFaceEnabledFlags.North), ref _northFace);
+        SetChildVisibility(_enabledFaces.HasFlag(CellFaceEnabledFlags.South), ref _southFace);
+        SetChildVisibility(_enabledFaces.HasFlag(CellFaceEnabledFlags.East), ref _eastFace);
+        SetChildVisibility(_enabledFaces.HasFlag(CellFaceEnabledFlags.West), ref _westFace);
+        SetChildVisibility(_enabledFaces.HasFlag(CellFaceEnabledFlags.Top), ref _topFace);
+        SetChildVisibility(_enabledFaces.HasFlag(CellFaceEnabledFlags.Bottom), ref _bottomFace);
     }
 
     private void SetChildVisibility(bool visible, ref Node node)
@@ -39,9 +64,11 @@ public partial class Cell : Node3D
         if (visible && !isParent)
         {
             AddChild(node);
+            node.GetNode<CollisionShape3D>("StaticBody3D/CollisionShape3D").Disabled = false;
         }
         else if (!visible && isParent)
         {
+            node.GetNode<CollisionShape3D>("StaticBody3D/CollisionShape3D").Disabled = true;
             RemoveChild(node);
         }
     }

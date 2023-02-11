@@ -17,12 +17,23 @@ camera_attributes = SubResource("CameraAttributesPhysical_v48hv")
 
 [node name="Cell" parent="." instance=ExtResource("1_4smsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+_enabledFaces = 51
 
 [node name="Cell2" parent="." instance=ExtResource("1_4smsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_enabledFaces = 52
 
 [node name="Cell3" parent="." instance=ExtResource("1_4smsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+_enabledFaces = 59
+
+[node name="Cell4" parent="." instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+_enabledFaces = 62
+
+[node name="Cell5" parent="." instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+_enabledFaces = 61
 
 [node name="Player" parent="." instance=ExtResource("2_2wgio")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 0)

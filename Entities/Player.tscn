@@ -1,8 +1,18 @@
-[gd_scene format=3 uid="uid://cciw6gmon6deq"]
+[gd_scene load_steps=3 format=3 uid="uid://cciw6gmon6deq"]
 
-[node name="Player" type="Node3D"]
+[ext_resource type="Script" path="res://Entities/Player.cs" id="1_7q6mg"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qpff"]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_7q6mg")
+
+[node name="Camera" type="Camera3D" parent="."]
+
+[node name="Light" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.878431, 0.772549, 1)
+light_energy = 0.5
 omni_attenuation = 1.85
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3qpff")
