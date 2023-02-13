@@ -8,6 +8,8 @@ public partial class Player : Node3D
     private RayCast3D _left;
     private RayCast3D _right;
 
+    private Tween _movementTween;
+
     public override void _Ready()
     {
         base._Ready();
@@ -41,11 +43,11 @@ public partial class Player : Node3D
         }
         else if (Input.IsActionJustPressed("turn_left"))
         {
-            RotateObjectLocal(Vector3.Up, Mathf.DegToRad(90));
+            Rotate(Mathf.DegToRad(90));
         }
         else if (Input.IsActionJustPressed("turn_right"))
         {
-            RotateObjectLocal(Vector3.Up, Mathf.DegToRad(-90));
+            Rotate(Mathf.DegToRad(-90));
         }
     }
 
@@ -61,6 +63,33 @@ public partial class Player : Node3D
         }
 #endif
 
-        Translate(motionVector);
+        if (_movementTween?.IsRunning() ?? false)
+            return;
+
+        _movementTween = CreateTween();
+        _movementTween.TweenMethod(
+            Callable.From<Transform3D>(transform => Transform = transform),
+            Transform,
+            Transform.TranslatedLocal(motionVector),
+            0.25f
+        )
+        .SetTrans(Tween.TransitionType.Linear)
+        .SetEase(Tween.EaseType.Out);
+    }
+
+    private void Rotate(float angle)
+    {
+        if (_movementTween?.IsRunning() ?? false)
+            return;
+
+        _movementTween = CreateTween();
+        _movementTween.TweenMethod(
+            Callable.From<Transform3D>(transform => Transform = transform),
+            Transform,
+            Transform.RotatedLocal(Vector3.Up, angle),
+            0.25f
+        )
+        .SetTrans(Tween.TransitionType.Linear)
+        .SetEase(Tween.EaseType.Out);
     }
 }

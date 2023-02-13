@@ -21,7 +21,7 @@ _enabledFaces = 51
 
 [node name="Cell2" parent="." instance=ExtResource("1_4smsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-_enabledFaces = 52
+_enabledFaces = 48
 
 [node name="Cell3" parent="." instance=ExtResource("1_4smsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
@@ -29,11 +29,23 @@ _enabledFaces = 59
 
 [node name="Cell4" parent="." instance=ExtResource("1_4smsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
-_enabledFaces = 62
+_enabledFaces = 58
 
 [node name="Cell5" parent="." instance=ExtResource("1_4smsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
-_enabledFaces = 61
+_enabledFaces = 57
+
+[node name="Cell6" parent="." instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+_enabledFaces = 53
+
+[node name="Cell7" parent="." instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+_enabledFaces = 52
+
+[node name="Cell8" parent="." instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+_enabledFaces = 54
 
 [node name="Player" parent="." instance=ExtResource("2_2wgio")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 1, 0)
