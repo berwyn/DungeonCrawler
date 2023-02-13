@@ -1,147 +1,153 @@
-[gd_scene load_steps=24 format=3 uid="uid://ilv2f5c1wpug"]
+[gd_scene load_steps=27 format=3 uid="uid://ilv2f5c1wpug"]
 
 [ext_resource type="Script" path="res://Entities/Cell.cs" id="1_aajd7"]
 [ext_resource type="Texture2D" uid="uid://cdgm6lrgtbw35" path="res://Textures/Dark/texture_01.png" id="2_rtccx"]
+[ext_resource type="Script" path="res://Entities/CellFace.cs" id="2_sywdo"]
 [ext_resource type="Texture2D" uid="uid://behyyakx3j6eo" path="res://Textures/Orange/texture_01.png" id="3_h5uts"]
 [ext_resource type="Texture2D" uid="uid://bi21o55frw2ug" path="res://Textures/Red/texture_01.png" id="3_pqnma"]
 [ext_resource type="Texture2D" uid="uid://dtjm0f2osnjnb" path="res://Textures/Green/texture_01.png" id="4_eqmns"]
 [ext_resource type="Texture2D" uid="uid://d1uyw2of2kefb" path="res://Textures/Purple/texture_01.png" id="4_gppkf"]
+[ext_resource type="Texture2D" uid="uid://i2yw5r0wscli" path="res://Textures/Light/texture_01.png" id="7_dte05"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jgut"]
-albedo_texture = ExtResource("2_rtccx")
+albedo_texture = ExtResource("3_pqnma")
+uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_05vih"]
+lightmap_size_hint = Vector2i(12, 12)
 material = SubResource("StandardMaterial3D_1jgut")
 orientation = 2
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jneth"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_r2luy"]
-size = Vector3(2, 2, 0.001)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k603r"]
+points = PackedVector3Array(1, 1, 0, 1, -1, 0, -1, 1, 0, -1, -1, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5tg4"]
-albedo_texture = ExtResource("2_rtccx")
+albedo_texture = ExtResource("4_eqmns")
+uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dafeh"]
 material = SubResource("StandardMaterial3D_r5tg4")
 flip_faces = true
 orientation = 2
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wshmw"]
+points = PackedVector3Array(1, 1, 0, 1, -1, 0, -1, 1, 0, -1, -1, 0)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhht7"]
 albedo_texture = ExtResource("3_h5uts")
+uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_nx2bm"]
 material = SubResource("StandardMaterial3D_qhht7")
 flip_faces = true
 orientation = 0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_t1r6k"]
-size = Vector3(0.001, 2, 2)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6bg2i"]
+points = PackedVector3Array(0, 1, 1, 0, 1, -1, 0, -1, 1, 0, -1, -1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cb2f2"]
 albedo_texture = ExtResource("4_gppkf")
+uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vx87s"]
 material = SubResource("StandardMaterial3D_cb2f2")
 orientation = 0
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yulxj"]
+points = PackedVector3Array(0, 1, 1, 0, 1, -1, 0, -1, 1, 0, -1, -1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ivs4b"]
-albedo_texture = ExtResource("3_pqnma")
+albedo_texture = ExtResource("7_dte05")
+uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jnj8a"]
 material = SubResource("StandardMaterial3D_ivs4b")
 flip_faces = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_f3hgc"]
-size = Vector3(2, 0.001, 2)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t0yqv"]
+points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4ohm"]
-albedo_texture = ExtResource("4_eqmns")
+albedo_texture = ExtResource("2_rtccx")
+uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_prpe8"]
 material = SubResource("StandardMaterial3D_r4ohm")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1xufs"]
-size = Vector3(2, 0.001, 2)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fr435"]
+points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
 
 [node name="Cell" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_aajd7")
 
 [node name="NorthFace" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+script = ExtResource("2_sywdo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NorthFace"]
 mesh = SubResource("PlaneMesh_05vih")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NorthFace"]
-physics_material_override = SubResource("PhysicsMaterial_jneth")
-metadata/face = "north"
+[node name="StaticBody3D" type="StaticBody3D" parent="NorthFace/MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NorthFace/StaticBody3D"]
-shape = SubResource("BoxShape3D_r2luy")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NorthFace/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_k603r")
 
 [node name="SouthFace" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+script = ExtResource("2_sywdo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SouthFace"]
 mesh = SubResource("PlaneMesh_dafeh")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SouthFace"]
-physics_material_override = SubResource("PhysicsMaterial_jneth")
-metadata/face = "south"
+[node name="StaticBody3D" type="StaticBody3D" parent="SouthFace/MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SouthFace/StaticBody3D"]
-shape = SubResource("BoxShape3D_r2luy")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SouthFace/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_wshmw")
 
 [node name="EastFace" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+script = ExtResource("2_sywdo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="EastFace"]
 mesh = SubResource("PlaneMesh_nx2bm")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="EastFace"]
-physics_material_override = SubResource("PhysicsMaterial_jneth")
-metadata/face = "east"
+[node name="StaticBody3D" type="StaticBody3D" parent="EastFace/MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EastFace/StaticBody3D"]
-shape = SubResource("BoxShape3D_t1r6k")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EastFace/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_6bg2i")
 
 [node name="WestFace" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+script = ExtResource("2_sywdo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WestFace"]
 mesh = SubResource("PlaneMesh_vx87s")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="WestFace"]
-physics_material_override = SubResource("PhysicsMaterial_jneth")
-metadata/face = "west"
+[node name="StaticBody3D" type="StaticBody3D" parent="WestFace/MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WestFace/StaticBody3D"]
-shape = SubResource("BoxShape3D_t1r6k")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WestFace/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_yulxj")
 
 [node name="TopFace" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("2_sywdo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TopFace"]
 mesh = SubResource("PlaneMesh_jnj8a")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TopFace"]
-physics_material_override = SubResource("PhysicsMaterial_jneth")
-metadata/face = "top"
+[node name="StaticBody3D" type="StaticBody3D" parent="TopFace/MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TopFace/StaticBody3D"]
-shape = SubResource("BoxShape3D_f3hgc")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TopFace/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_t0yqv")
 
 [node name="BottomFace" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("2_sywdo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BottomFace"]
 mesh = SubResource("PlaneMesh_prpe8")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BottomFace"]
-physics_material_override = SubResource("PhysicsMaterial_jneth")
-metadata/face = "bottom"
+[node name="StaticBody3D" type="StaticBody3D" parent="BottomFace/MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BottomFace/StaticBody3D"]
-shape = SubResource("BoxShape3D_1xufs")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BottomFace/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_fr435")

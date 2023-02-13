@@ -1,18 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://cciw6gmon6deq"]
+[gd_scene load_steps=2 format=3 uid="uid://cciw6gmon6deq"]
 
 [ext_resource type="Script" path="res://Entities/Player.cs" id="1_7q6mg"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3qpff"]
-
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="Node3D"]
 script = ExtResource("1_7q6mg")
 
 [node name="Camera" type="Camera3D" parent="."]
+fov = 37.8493
 
 [node name="Light" type="OmniLight3D" parent="."]
 light_color = Color(1, 0.878431, 0.772549, 1)
 light_energy = 0.5
 omni_attenuation = 1.85
 
-[node name="CollisionShape" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_3qpff")
+[node name="Forward" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -2)
+
+[node name="Reverse" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 2)
+
+[node name="Left" type="RayCast3D" parent="."]
+target_position = Vector3(-2, 0, 0)
+
+[node name="Right" type="RayCast3D" parent="."]
+target_position = Vector3(2, 0, 0)

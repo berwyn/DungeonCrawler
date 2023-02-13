@@ -6,6 +6,7 @@ using Godot;
 public enum CellFaceEnabledFlags
 {
     None = 0,
+
     North = 1 << 0,
     South = 1 << 1,
     East = 1 << 2,
@@ -44,7 +45,6 @@ public partial class Cell : Node3D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        UpdateFaces();
     }
 
     public void UpdateFaces()
@@ -62,14 +62,8 @@ public partial class Cell : Node3D
         var isParent = this == node.GetParent();
 
         if (visible && !isParent)
-        {
-            AddChild(node);
-            node.GetNode<CollisionShape3D>("StaticBody3D/CollisionShape3D").Disabled = false;
-        }
+            node.Call("Enable");
         else if (!visible && isParent)
-        {
-            node.GetNode<CollisionShape3D>("StaticBody3D/CollisionShape3D").Disabled = true;
-            RemoveChild(node);
-        }
+            node.Call("Disable");
     }
 }
