@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqaux03vyg6tr"]
+[gd_scene load_steps=6 format=3 uid="uid://bqaux03vyg6tr"]
 
 [ext_resource type="PackedScene" uid="uid://ilv2f5c1wpug" path="res://Entities/Cell.tscn" id="1_4smsx"]
 [ext_resource type="PackedScene" uid="uid://cciw6gmon6deq" path="res://Entities/Player.tscn" id="2_2wgio"]
+[ext_resource type="Script" path="res://addons/dungeon_framework/nodes/DungeonCell.cs" id="3_6wpes"]
 
 [sub_resource type="Environment" id="Environment_6ejer"]
 background_mode = 1
 ambient_light_source = 1
+fog_enabled = true
+fog_light_color = Color(0.282353, 0.309804, 0.34902, 1)
+fog_density = 0.02
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_v48hv"]
 
@@ -15,37 +19,36 @@ ambient_light_source = 1
 environment = SubResource("Environment_6ejer")
 camera_attributes = SubResource("CameraAttributesPhysical_v48hv")
 
-[node name="Cell" parent="." instance=ExtResource("1_4smsx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-_enabledFaces = 51
-
-[node name="Cell2" parent="." instance=ExtResource("1_4smsx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-_enabledFaces = 48
-
-[node name="Cell3" parent="." instance=ExtResource("1_4smsx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-_enabledFaces = 59
-
-[node name="Cell4" parent="." instance=ExtResource("1_4smsx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
-_enabledFaces = 58
-
-[node name="Cell5" parent="." instance=ExtResource("1_4smsx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
-_enabledFaces = 57
-
-[node name="Cell6" parent="." instance=ExtResource("1_4smsx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
-_enabledFaces = 53
-
-[node name="Cell7" parent="." instance=ExtResource("1_4smsx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-_enabledFaces = 52
-
-[node name="Cell8" parent="." instance=ExtResource("1_4smsx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
-_enabledFaces = 54
-
 [node name="Player" parent="." instance=ExtResource("2_2wgio")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 1, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 1, 4)
+
+[node name="Cells" type="Node3D" parent="."]
+
+[node name="Cell" parent="Cells" instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Cell2" parent="Cells" instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Cell3" parent="Cells" instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Cell4" parent="Cells" instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Cell5" parent="Cells" instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="Cell6" parent="Cells" instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="Cell7" parent="Cells" instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Cell8" parent="Cells" instance=ExtResource("1_4smsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+
+[node name="DungeonCell" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+script = ExtResource("3_6wpes")
+EnabledFaces = 63

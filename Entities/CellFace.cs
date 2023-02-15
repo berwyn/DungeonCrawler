@@ -24,7 +24,10 @@ public partial class CellFace : Node3D
         _mesh.Visible = false;
         _body.CollisionLayer = 0;
         _body.CollisionMask = 0;
+
+#if DEBUG
         GD.Print("Disabling face");
+#endif
     }
 
     public void Enable()
@@ -32,6 +35,9 @@ public partial class CellFace : Node3D
         _mesh.Visible = true;
         _body.CollisionLayer = 1;
         _body.CollisionMask = 1;
+
+#if DEBUG
         GD.Print("Enabling face");
+#endif
     }
 }

@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="DungeonCrawler"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dungeon_framework/plugin.cfg")
+
 [input]
 
 look_up={

@@ -3,6 +3,8 @@ using Godot;
 public partial class Player : Node3D
 {
     private Camera3D _camera;
+    private Light3D _light;
+
     private RayCast3D _forward;
     private RayCast3D _reverse;
     private RayCast3D _left;
@@ -15,6 +17,7 @@ public partial class Player : Node3D
         base._Ready();
 
         _camera = GetNode<Camera3D>("Camera");
+        _light = GetNode<Light3D>("Light");
 
         _forward = GetNode<RayCast3D>("Forward");
         _reverse = GetNode<RayCast3D>("Reverse");
