@@ -21,7 +21,7 @@ environment = SubResource("Environment_6ejer")
 camera_attributes = SubResource("CameraAttributesPhysical_v48hv")
 
 [node name="Player" parent="." instance=ExtResource("2_2wgio")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 1, 6)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 1, 8)
 
 [node name="Cells" type="Node3D" parent="."]
 
@@ -50,7 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
 
 [node name="More Better Cells" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
 
 [node name="DungeonCell" type="Node3D" parent="More Better Cells"]
 script = ExtResource("3_6wpes")
@@ -66,12 +66,13 @@ Texture = ExtResource("4_5br1l")
 [node name="DungeonCell3" type="Node3D" parent="More Better Cells"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 script = ExtResource("3_6wpes")
-EnabledFaces = 57
+EnabledFaces = 48
 Texture = ExtResource("4_5br1l")
 
 [node name="DungeonCell4" type="Node3D" parent="More Better Cells"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
 script = ExtResource("3_6wpes")
+EnabledFaces = 58
 Texture = ExtResource("4_5br1l")
 
 [node name="DungeonCell5" type="Node3D" parent="More Better Cells"]
@@ -83,17 +84,17 @@ Texture = ExtResource("4_5br1l")
 [node name="DungeonCell6" type="Node3D" parent="More Better Cells"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 script = ExtResource("3_6wpes")
-EnabledFaces = 57
+EnabledFaces = 52
 Texture = ExtResource("4_5br1l")
 
 [node name="DungeonCell7" type="Node3D" parent="More Better Cells"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
 script = ExtResource("3_6wpes")
-EnabledFaces = 57
+EnabledFaces = 54
 Texture = ExtResource("4_5br1l")
 
 [node name="DungeonCell8" type="Node3D" parent="More Better Cells"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
 script = ExtResource("3_6wpes")
-EnabledFaces = 57
+EnabledFaces = 53
 Texture = ExtResource("4_5br1l")
