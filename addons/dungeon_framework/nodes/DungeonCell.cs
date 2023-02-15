@@ -54,6 +54,15 @@ public partial class DungeonCell : Node3D
 
     private void CreateFaces()
     {
+        foreach (var child in GetChildren())
+        {
+            if (child.IsQueuedForDeletion())
+                continue;
+
+            RemoveChild(child);
+            child.QueueFree();
+        }
+
         CreateFace(Face.North, ref _north);
         CreateFace(Face.South, ref _south);
         CreateFace(Face.East, ref _east);
@@ -118,7 +127,7 @@ public partial class DungeonCell : Node3D
 
             Face.Top => Transform3D.Identity
                 .TranslatedLocal(new(0, 2, 0))
-                .RotatedLocal(new(0, 1, 0), Mathf.DegToRad(180)),
+                .RotatedLocal(new(1, 0, 0), Mathf.DegToRad(180)),
 
             _ => Transform3D.Identity,
         };
