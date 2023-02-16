@@ -6,7 +6,6 @@
 script = ExtResource("1_7q6mg")
 
 [node name="Camera" type="Camera3D" parent="."]
-fov = 37.8493
 
 [node name="Light" type="OmniLight3D" parent="."]
 light_color = Color(1, 0.878431, 0.772549, 1)
