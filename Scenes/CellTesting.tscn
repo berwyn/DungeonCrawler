@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqaux03vyg6tr"]
+[gd_scene load_steps=8 format=3 uid="uid://bqaux03vyg6tr"]
 
 [ext_resource type="PackedScene" uid="uid://cciw6gmon6deq" path="res://Entities/Player.tscn" id="2_2wgio"]
 [ext_resource type="Script" path="res://addons/dungeon_framework/nodes/DungeonCell.cs" id="3_6wpes"]
 [ext_resource type="Texture2D" uid="uid://cdgm6lrgtbw35" path="res://Textures/Dark/texture_01.png" id="4_5br1l"]
+[ext_resource type="Script" path="res://addons/dungeon_framework/nodes/DungeonEvent.cs" id="4_qkm43"]
+[ext_resource type="Texture2D" uid="uid://dtjm0f2osnjnb" path="res://Textures/Green/texture_01.png" id="5_bxxp6"]
 
 [sub_resource type="Environment" id="Environment_6ejer"]
 background_mode = 1
@@ -70,3 +72,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
 script = ExtResource("3_6wpes")
 EnabledFaces = 53
 Texture = ExtResource("4_5br1l")
+
+[node name="DungeonEvent" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+script = ExtResource("4_qkm43")
+Indicator = ExtResource("5_bxxp6")

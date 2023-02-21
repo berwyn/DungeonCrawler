@@ -10,7 +10,7 @@ script = ExtResource("1_7q6mg")
 [node name="Light" type="OmniLight3D" parent="."]
 light_color = Color(1, 0.878431, 0.772549, 1)
 light_energy = 0.5
-omni_attenuation = 1.85
+omni_range = 6.0
 
 [node name="Forward" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -2)

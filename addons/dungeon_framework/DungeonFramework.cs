@@ -14,7 +14,12 @@ public partial class DungeonFramework : EditorPlugin
         var dungeonCell = GD.Load<Script>("res://addons/dungeon_framework/nodes/DungeonCell.cs");
         var dungeonCellIcon = GD.Load<Texture2D>("res://addons/dungeon_framework/nodes/DungeonCell.svg");
 
+        var dungeonEvent = GD.Load<Script>("res://addons/dungeon_framework/nodes/DungeonEvent.cs");
+        var dungeonEventIcon = GD.Load<Texture2D>("res://addons/dungeon_framework/nodes/DungeonCell.svg");
+
         AddCustomType(nameof(DungeonCell), nameof(Node3D), script: dungeonCell, icon: dungeonCellIcon);
+        AddCustomType(nameof(DungeonEvent), nameof(Node3D), script: dungeonEvent, icon: dungeonEventIcon);
+
         AddNode3DGizmoPlugin(_dungeonCellGizmo);
     }
 

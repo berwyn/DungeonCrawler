@@ -19,8 +19,17 @@ public partial class DungeonCell : Node3D
         All = North | South | East | West | Top | Bottom,
     }
 
+    /// <summary>
+    /// The size of the cells in units.
+    /// </summary>
+    public const byte SIZE = 2;
+
     private Face _enabledFaces;
 
+    /// <summary>
+    /// The faces that are enabled on this cell. Enabled faces have a visible mesh
+    /// and a collision plane.
+    /// </summary>
     [Export]
     public Face EnabledFaces
     {
@@ -34,6 +43,9 @@ public partial class DungeonCell : Node3D
 
     private Texture2D _texture;
 
+    /// <summary>
+    /// The texture to display on visible faces.
+    /// </summary>
     [Export]
     public Texture2D Texture
     {
@@ -91,7 +103,7 @@ public partial class DungeonCell : Node3D
         {
             Mesh = new PlaneMesh
             {
-                Size = new(2, 2),
+                Size = new(SIZE, SIZE),
             },
             MaterialOverride = new StandardMaterial3D
             {
