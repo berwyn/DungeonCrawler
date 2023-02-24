@@ -1,3 +1,5 @@
+using DungeonFramework.Nodes;
+using DungeonFramework.Utils;
 using Godot;
 
 public partial class Player : Node3D
@@ -58,13 +60,20 @@ public partial class Player : Node3D
     {
         var motionVector = direction * 2;
 
-#if DEBUG
         if (ray.IsColliding())
         {
-            GD.Print($"Collision: {ray.Name}");
+            var collider = ray.GetCollider();
+            if (collider is DungeonEvent de)
+            {
+                de.ActivateEvent();
+            }
+            else if (collider is Node n && n.HasAncestor<DungeonEvent>())
+            {
+                n.GetAncestorOrNull<DungeonEvent>()?.ActivateEvent();
+            }
+
             return;
         }
-#endif
 
         if (_movementTween?.IsRunning() ?? false)
             return;

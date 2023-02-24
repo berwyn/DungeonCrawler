@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Godot;
 
 namespace DungeonFramework.Nodes;
@@ -19,23 +21,63 @@ public partial class DungeonEvent : Node3D
     }
 
     [Export]
-    public DungeonEventTrigger Trigger;
-
-    [Export]
     public Player Player;
 
+    private DungeonEventTrigger _trigger;
     private MeshInstance3D _indicatorNodeMesh;
 
     public override void _Ready()
     {
         base._Ready();
 
+        foreach (var child in GetChildren())
+        {
+            if (child is DungeonEventTrigger dt)
+            {
+                _trigger = dt;
+                if (!_trigger.IsActivated)
+                    Visible = false;
+            }
+        }
+
         CreateTree();
+    }
+
+    public override string[] _GetConfigurationWarnings()
+    {
+        var errors = new List<string>();
+
+        bool hasTrigger = false;
+
+        foreach (var child in GetChildren())
+        {
+            if (child is DungeonEventTrigger)
+                hasTrigger = true;
+        }
+
+        if (!hasTrigger)
+            errors.Add("No event trigger configured!");
+
+        return errors.ToArray();
     }
 
     public override void _Process(double delta)
     {
         base._Process(delta);
+    }
+
+    public void ActivateEvent()
+    {
+        if (_trigger is not null && _trigger.RequiresmentsSatisfied)
+        {
+            _trigger.OnTriggered();
+
+            Visible = _trigger.IsActivated;
+            if (!Visible)
+            {
+                _indicatorNodeMesh.ProcessMode = ProcessModeEnum.Disabled;
+            }
+        }
     }
 
     private void CreateTree()
@@ -57,12 +99,8 @@ public partial class DungeonEvent : Node3D
             }
         };
 
+        _indicatorNodeMesh.CreateConvexCollision(clean: true, simplify: true);
+
         AddChild(_indicatorNodeMesh, @internal: InternalMode.Front);
     }
-}
-
-public abstract partial class DungeonEventTrigger : Resource
-{
-    public abstract bool IsActivated { get; }
-    public abstract bool RequiresmentsSatisfied { get; }
 }

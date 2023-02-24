@@ -20,6 +20,15 @@ public partial class DungeonFramework : EditorPlugin
         AddCustomType(nameof(DungeonCell), nameof(Node3D), script: dungeonCell, icon: dungeonCellIcon);
         AddCustomType(nameof(DungeonEvent), nameof(Node3D), script: dungeonEvent, icon: dungeonEventIcon);
 
+        var dungeonEventTrigger = GD.Load<Script>("res://addons/dungeon_framework/nodes/DungeonEventTrigger.cs");
+        var dungeonEventTriggerIcon = GD.Load<Texture2D>("res://addons/dungeon_framework/nodes/DungeonCell.svg");
+
+        var oneshotDungeonEventTrigger = GD.Load<Script>("res://addons/dungeon_framework/nodes/OneshotDungeonEventTrigger.cs");
+        var oneshotDungeonEventTriggerIcon = GD.Load<Texture2D>("res://addons/dungeon_framework/nodes/DungeonCell.svg");
+
+        AddCustomType(nameof(DungeonEventTrigger), nameof(Node), script: dungeonEventTrigger, icon: dungeonEventTriggerIcon);
+        AddCustomType(nameof(OneshotDungeonEventTrigger), nameof(Node), script: oneshotDungeonEventTrigger, icon: oneshotDungeonEventTriggerIcon);
+
         AddNode3DGizmoPlugin(_dungeonCellGizmo);
     }
 
