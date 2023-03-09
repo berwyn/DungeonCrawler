@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqaux03vyg6tr"]
+[gd_scene load_steps=12 format=3 uid="uid://bqaux03vyg6tr"]
 
 [ext_resource type="PackedScene" uid="uid://cciw6gmon6deq" path="res://Entities/Player.tscn" id="2_2wgio"]
 [ext_resource type="Script" path="res://addons/dungeon_framework/nodes/DungeonCell.cs" id="3_6wpes"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://addons/dungeon_framework/nodes/OneshotDungeonEventTrigger.cs" id="5_g4v5e"]
 [ext_resource type="Script" path="res://addons/dungeon_framework/nodes/DialogueDungeonEventEffect.cs" id="6_rsvv3"]
 [ext_resource type="PackedScene" uid="uid://bacvjq2gksrka" path="res://Scenes/UiTesting.tscn" id="7_7y7jj"]
+[ext_resource type="Texture2D" uid="uid://l5glrnioj132" path="res://Textures/Dark/texture_02.png" id="8_fvajl"]
+[ext_resource type="Script" path="res://Scenes/CellTesting/RevealDoorEffect.cs" id="9_p7rgj"]
 
 [sub_resource type="Environment" id="Environment_6ejer"]
 background_mode = 1
@@ -30,7 +32,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 
 
 [node name="DungeonCell" type="Node3D" parent="More Better Cells"]
 script = ExtResource("3_6wpes")
-EnabledFaces = 59
+EnabledFaces = 51
 Texture = ExtResource("4_5br1l")
 
 [node name="DungeonCell2" type="Node3D" parent="More Better Cells"]
@@ -85,3 +87,64 @@ script = ExtResource("5_g4v5e")
 [node name="DialogueDungeonEventEffect" type="Node" parent="DungeonEvent"]
 script = ExtResource("6_rsvv3")
 _scene = ExtResource("7_7y7jj")
+
+[node name="Second Testing Cells" type="Node3D" parent="."]
+
+[node name="DungeonCell" type="Node3D" parent="Second Testing Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+script = ExtResource("3_6wpes")
+EnabledFaces = 51
+Texture = ExtResource("8_fvajl")
+
+[node name="DungeonCell2" type="Node3D" parent="Second Testing Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+script = ExtResource("3_6wpes")
+EnabledFaces = 51
+Texture = ExtResource("8_fvajl")
+
+[node name="DungeonCell3" type="Node3D" parent="Second Testing Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+script = ExtResource("3_6wpes")
+EnabledFaces = 48
+Texture = ExtResource("8_fvajl")
+
+[node name="DungeonCell4" type="Node3D" parent="Second Testing Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+script = ExtResource("3_6wpes")
+EnabledFaces = 54
+Texture = ExtResource("8_fvajl")
+
+[node name="DungeonCell5" type="Node3D" parent="Second Testing Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
+script = ExtResource("3_6wpes")
+EnabledFaces = 53
+Texture = ExtResource("8_fvajl")
+
+[node name="DungeonCell6" type="Node3D" parent="Second Testing Cells"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+script = ExtResource("3_6wpes")
+EnabledFaces = 56
+Texture = ExtResource("8_fvajl")
+
+[node name="DungeonCell7" type="Node3D" parent="Second Testing Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 2)
+script = ExtResource("3_6wpes")
+EnabledFaces = 58
+Texture = ExtResource("8_fvajl")
+
+[node name="DungeonCell8" type="Node3D" parent="Second Testing Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2)
+script = ExtResource("3_6wpes")
+EnabledFaces = 57
+Texture = ExtResource("8_fvajl")
+
+[node name="DungeonEvent2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+script = ExtResource("4_qkm43")
+
+[node name="OneshotDungeonEventTrigger" type="Node" parent="DungeonEvent2"]
+script = ExtResource("5_g4v5e")
+
+[node name="RevealDoorEffect" type="Node3D" parent="DungeonEvent2"]
+script = ExtResource("9_p7rgj")
