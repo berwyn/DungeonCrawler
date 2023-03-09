@@ -1,5 +1,6 @@
 #if TOOLS
 using DungeonFramework.Nodes;
+using DungeonFramework.State;
 using Godot;
 
 namespace DungeonFramework;
@@ -28,6 +29,22 @@ public partial class DungeonFramework : EditorPlugin
 
         AddCustomType(nameof(DungeonEventTrigger), nameof(Node), script: dungeonEventTrigger, icon: dungeonEventTriggerIcon);
         AddCustomType(nameof(OneshotDungeonEventTrigger), nameof(Node), script: oneshotDungeonEventTrigger, icon: oneshotDungeonEventTriggerIcon);
+
+        var dungeonEventEffect = GD.Load<Script>("res://addons/dungeon_framework/nodes/DungeonEventEffect.cs");
+        var dungeonEventEffectIcon = GD.Load<Texture2D>("res://addons/dungeon_framework/nodes/DungeonCell.svg");
+        var dialogueDungeonEventEffect = GD.Load<Script>("res://addons/dungeon_framework/nodes/DialogueDungeonEventEffect.cs");
+        var dialogueDungeonEventEffectIcon = GD.Load<Texture2D>("res://addons/dungeon_framework/nodes/DungeonCell.svg");
+
+        AddCustomType(nameof(DungeonEventEffect), nameof(Node), script: dungeonEventEffect, icon: dungeonEventEffectIcon);
+        AddCustomType(nameof(DialogueDungeonEventEffect), nameof(Node), script: dialogueDungeonEventEffect, icon: dialogueDungeonEventEffectIcon);
+
+        var stateMachine = GD.Load<Script>("res://addons/dungeon_framework/state/StateMachine.cs");
+        var stateMachineIcon = GD.Load<Texture2D>("res://addons/dungeon_framework/nodes/DungeonCell.svg");
+        var state = GD.Load<Script>("res://addons/dungeon_framework/state/State.cs");
+        var stateIcon = GD.Load<Texture2D>("res://addons/dungeon_framework/nodes/DungeonCell.svg");
+
+        AddCustomType(nameof(StateMachine), nameof(Node), script: stateMachine, icon: stateMachineIcon);
+        AddCustomType(nameof(State), nameof(Node), script: state, icon: stateIcon);
 
         AddNode3DGizmoPlugin(_dungeonCellGizmo);
     }

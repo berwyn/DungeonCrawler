@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqaux03vyg6tr"]
+[gd_scene load_steps=10 format=3 uid="uid://bqaux03vyg6tr"]
 
 [ext_resource type="PackedScene" uid="uid://cciw6gmon6deq" path="res://Entities/Player.tscn" id="2_2wgio"]
 [ext_resource type="Script" path="res://addons/dungeon_framework/nodes/DungeonCell.cs" id="3_6wpes"]
 [ext_resource type="Texture2D" uid="uid://cdgm6lrgtbw35" path="res://Textures/Dark/texture_01.png" id="4_5br1l"]
 [ext_resource type="Script" path="res://addons/dungeon_framework/nodes/DungeonEvent.cs" id="4_qkm43"]
 [ext_resource type="Script" path="res://addons/dungeon_framework/nodes/OneshotDungeonEventTrigger.cs" id="5_g4v5e"]
+[ext_resource type="Script" path="res://addons/dungeon_framework/nodes/DialogueDungeonEventEffect.cs" id="6_rsvv3"]
+[ext_resource type="PackedScene" uid="uid://bacvjq2gksrka" path="res://Scenes/UiTesting.tscn" id="7_7y7jj"]
 
 [sub_resource type="Environment" id="Environment_6ejer"]
 background_mode = 1
@@ -79,3 +81,7 @@ script = ExtResource("4_qkm43")
 
 [node name="OneshotDungeonEventTrigger" type="Node" parent="DungeonEvent"]
 script = ExtResource("5_g4v5e")
+
+[node name="DialogueDungeonEventEffect" type="Node" parent="DungeonEvent"]
+script = ExtResource("6_rsvv3")
+_scene = ExtResource("7_7y7jj")

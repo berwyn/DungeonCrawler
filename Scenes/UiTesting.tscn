@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://bacvjq2gksrka"]
+
+[ext_resource type="Script" path="res://Scenes/UiTesting/UiTesting.cs" id="1_l33oq"]
+[ext_resource type="Script" path="res://addons/dungeon_framework/state/StateMachine.cs" id="2_4ecx4"]
+[ext_resource type="Script" path="res://Scenes/UiTesting/Displayed.cs" id="3_v85lg"]
+[ext_resource type="Script" path="res://Scenes/UiTesting/Complete.cs" id="4_sqsnj"]
+
+[node name="UiTesting" type="AspectRatioContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.77
+script = ExtResource("1_l33oq")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Example!"
+
+[node name="CompleteButton" type="Button" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_4ecx4")
+_initialState = NodePath("Displayed")
+
+[node name="Displayed" type="Node" parent="StateMachine"]
+script = ExtResource("3_v85lg")
+ValidNextStates = [NodePath("../Complete")]
+
+[node name="Complete" type="Node" parent="StateMachine"]
+script = ExtResource("4_sqsnj")
