@@ -12,5 +12,7 @@ public partial class RevealDoorEffect : DungeonEventEffect
     public override void OnActivated()
     {
         _cell.EnabledFaces &= ~DungeonCell.Face.West;
+
+        EmitSignal(SignalName.Completed);
     }
 }

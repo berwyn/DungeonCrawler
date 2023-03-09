@@ -4,6 +4,8 @@ using Godot;
 
 public partial class Player : Node3D
 {
+    public bool IsMovementAllowed { get; set; } = true;
+
     private Camera3D _camera;
     private Light3D _light;
 
@@ -29,6 +31,9 @@ public partial class Player : Node3D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (!IsMovementAllowed)
+            return;
+
         // TODO: Handle camera rotation
         if (Input.IsActionJustPressed("move_forward"))
         {

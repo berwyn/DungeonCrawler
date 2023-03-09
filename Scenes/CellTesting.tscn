@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqaux03vyg6tr"]
+[gd_scene load_steps=13 format=3 uid="uid://bqaux03vyg6tr"]
 
+[ext_resource type="Script" path="res://Scenes/CellTesting/CellTesting.cs" id="1_dtta7"]
 [ext_resource type="PackedScene" uid="uid://cciw6gmon6deq" path="res://Entities/Player.tscn" id="2_2wgio"]
 [ext_resource type="Script" path="res://addons/dungeon_framework/nodes/DungeonCell.cs" id="3_6wpes"]
 [ext_resource type="Texture2D" uid="uid://cdgm6lrgtbw35" path="res://Textures/Dark/texture_01.png" id="4_5br1l"]
@@ -20,6 +21,7 @@ fog_density = 0.02
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_v48hv"]
 
 [node name="CellTesting" type="Node3D"]
+script = ExtResource("1_dtta7")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6ejer")
@@ -137,6 +139,12 @@ Texture = ExtResource("8_fvajl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2)
 script = ExtResource("3_6wpes")
 EnabledFaces = 57
+Texture = ExtResource("8_fvajl")
+
+[node name="DungeonCell9" type="Node3D" parent="Second Testing Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+script = ExtResource("3_6wpes")
+EnabledFaces = 59
 Texture = ExtResource("8_fvajl")
 
 [node name="DungeonEvent2" type="Node3D" parent="."]

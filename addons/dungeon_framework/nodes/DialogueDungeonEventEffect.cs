@@ -63,5 +63,7 @@ public partial class DialogueDungeonEventEffect : DungeonEventEffect
         {
             child.QueueFree();
         }
+
+        EmitSignal(SignalName.Completed);
     }
 }

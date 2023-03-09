@@ -7,6 +7,12 @@ namespace DungeonFramework.Nodes;
 [Tool]
 public partial class DungeonEvent : Node3D
 {
+    [Signal]
+    public delegate void ActivatedEventHandler();
+
+    [Signal]
+    public delegate void CompletedEventHandler();
+
     private Texture2D _indicator;
 
     [Export]
@@ -42,6 +48,10 @@ public partial class DungeonEvent : Node3D
             else if (child is DungeonEventEffect de)
             {
                 _effect = de;
+                _effect.Connect(
+                    DungeonEventEffect.SignalName.Completed,
+                    Callable.From(DungeonEventEffect_OnCompleted)
+                );
             }
         }
 
@@ -79,6 +89,7 @@ public partial class DungeonEvent : Node3D
 
     public void ActivateEvent()
     {
+        EmitSignal(SignalName.Activated);
         if (_trigger is not null && _trigger.RequiresmentsSatisfied)
         {
             _trigger.OnTriggered();
@@ -90,6 +101,15 @@ public partial class DungeonEvent : Node3D
                 _indicatorNodeMesh.ProcessMode = ProcessModeEnum.Disabled;
             }
         }
+    }
+
+    public void ConnectEventHandlers(Callable? OnActivated, Callable? OnComplete)
+    {
+        if (OnActivated is Callable onActivated)
+            Connect(SignalName.Activated, onActivated);
+
+        if (OnComplete is Callable onComplete)
+            Connect(SignalName.Completed, onComplete);
     }
 
     private void CreateTree()
@@ -114,5 +134,10 @@ public partial class DungeonEvent : Node3D
         _indicatorNodeMesh.CreateConvexCollision(clean: true, simplify: true);
 
         AddChild(_indicatorNodeMesh, @internal: InternalMode.Front);
+    }
+
+    private void DungeonEventEffect_OnCompleted()
+    {
+        EmitSignal(SignalName.Completed);
     }
 }
